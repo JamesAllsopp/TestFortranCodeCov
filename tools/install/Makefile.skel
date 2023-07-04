@@ -136,8 +136,8 @@ styletest:
 	@./tests/run_style_test.sh
 
 unittests: $(fruit_driver)
-        @echo "Fruit Driver ${fruit_driver}"
-        @echo "List files $(shell ls)"
+	@echo "Fruit Driver ${fruit_driver}"
+	@echo "List files $(shell ls)"
 	@echo "OPENLIBMDIR ${OPENLIBMDIR}"
 	@export DYLD_LIBRARY_PATH=$(FORT_LIB):$(CVODELIB):$(OPENLIBMDIR) ; $(fruit_driver)
 
