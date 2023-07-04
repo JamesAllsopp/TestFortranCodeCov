@@ -1,0 +1,6 @@
+# Ignore the executable, the Makefile, and the compiler-generated files in this directory
+atchem2
+Makefile
+*.gcda
+*.gcno
+*.xml
