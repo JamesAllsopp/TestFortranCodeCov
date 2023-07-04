@@ -90,11 +90,11 @@ OBJ = obj
 SRC = src
 
 # executable
-AOUT = atchem2
+AOUT = hello
 
 # source files
-UNITTEST_SRCS = $(SRC)/dataStructures.f90 $(SRC)/argparse.f90 $(SRC)/interpolationFunctions.f90 $(SRC)/configFunctions.f90 $(SRC)/inputFunctions.f90 $(SRC)/outputFunctions.f90 $(SRC)/atmosphereFunctions.f90 $(SRC)/solarFunctions.f90 $(SRC)/constraintFunctions.f90 $(SRC)/solverFunctions.f90 $(SRC)/parameterModules.f90
-SRCS = $(UNITTEST_SRCS) $(SRC)/atchem2.f90
+UNITTEST_SRCS = $(SRC)/dataStructures.f90 $(SRC)/solarFunctions.f90
+SRCS = $(UNITTEST_SRCS) $(SRC)/hello.f90
 
 # prerequisite is $(SRCS), so this will be rebuilt everytime any source file in $(SRCS) changes
 $(AOUT): $(SRCS)
@@ -166,14 +166,7 @@ clean:
 
 # ================================================================== #
 # Dependencies
-atchem2.o : atchem2.f90 inputFunctions.o configFunctions.o dataStructures.o
-argparse.o : argparse.f90 dataStructures.o
-constraintFunctions.o : constraintFunctions.f90 dataStructures.o
-atmosphereFunctions.o : atmosphereFunctions.f90
+hello.o : hello.f90 solarFunctions.o dataStructures.o
+solarFunctions.o : solarFunctions.f90 dataStructures.o
 dataStructures.o : dataStructures.f90
-inputFunctions.o : inputFunctions.f90 configFunctions.o dataStructures.o
-interpolationFunctions.o : interpolationFunctions.f90 dataStructures.o
-configFunctions.o : configFunctions.f90
-outputFunctions.o : outputFunctions.f90 dataStructures.o
-parameterModules.o : parameterModules.f90 dataStructures.o
-solverFunctions.o : solverFunctions.f90 dataStructures.o
+
