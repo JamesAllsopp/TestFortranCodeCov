@@ -83,13 +83,13 @@ jobs:
         #  fi
 
       # -------------------------------------------------------------
-      - name: Indent and style tests
+      #- name: Indent and style tests
         #run: |
         #  make indenttest
         #  make styletest
 
       # -------------------------------------------------------------
-      - name: Run AtChem2
+      #- name: Run AtChem2
         #run: |
           # Run Atchem2
         #  ./atchem2
