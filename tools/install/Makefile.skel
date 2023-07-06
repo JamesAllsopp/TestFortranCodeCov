@@ -23,7 +23,7 @@ FORTC = "gnu"
 # set the dependencies paths
 # N.B.: use the FULL PATHS, not the relative paths
 CVODELIB     = cvode/lib
-OPENLIBMDIR  = openlibm-0.8.1
+OPENLIBMDIR  = /home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1
 FRUITDIR     = fruit_3.4.3
 
 
