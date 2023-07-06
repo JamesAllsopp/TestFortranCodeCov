@@ -105,7 +105,7 @@ jobs:
           # Run unit tests
           export PATH=$PATH:$PWD/numdiff/bin
           pwd
-          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1
+          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1:/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/cvode/lib
           ls /home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1
           make unittests
           # Upload `unittests` coverage to codecov
