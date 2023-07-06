@@ -107,7 +107,7 @@ unittest_code = $(UNITTEST_SRCS) $(shell ls tests/unit_tests/*_test.f90 )
 unittest_code_gen = $(UNITTESTDIR)/fruit_basket_gen.f90 $(UNITTESTDIR)/fruit_driver_gen.f90
 all_unittest_code = $(fruit_code) $(unittest_code) $(unittest_code_gen)
 fruit_driver = $(UNITTESTDIR)/fruit_driver.exe
-@mkdir obj
+$(shell mkdir -p ${OBJ})
 # copy fruit_generator.rb to the unit tests directory and replace the path of FRUIT with $(FRUITDIR)
 $(UNITTESTDIR)/fruit_basket_gen.f90 : $(unittest_code)
 	@cp tests/fruit_generator.rb $(UNITTESTDIR)
