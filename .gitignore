@@ -5,4 +5,4 @@ atchem2
 *.gcno
 *.xml
 build/*
-obj/*
+
