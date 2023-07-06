@@ -105,6 +105,7 @@ jobs:
           # Run unit tests
           #export PATH=$PATH:$PWD/numdiff/bin
           pwd
+          ls /home/runner/work/TestFortranCodeCov/TestFortranCodeCov
           make unittests
           # Upload `unittests` coverage to codecov
           if [[ $RUNNER_OS == "Linux" ]]; then sudo ln -f -s /usr/bin/gcov-${{ matrix.fortran }} /usr/bin/gcov ; bash <(curl -s https://codecov.io/bash) -F unittests ; fi
