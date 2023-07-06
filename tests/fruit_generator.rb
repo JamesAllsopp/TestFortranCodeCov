@@ -18,7 +18,7 @@ if ENV['GITHUB_ACTIONS'] == nil
   load "fruit_3.4.3/rake_base.rb"
 else
   if ENV['RUNNER_OS'] == 'Linux'
-    load "fruit_3.4.3/rake_base.rb"
+    load "/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/fruit_3.4.3/rake_base.rb"
   else
     load "/Users/runner/work/AtChem2/AtChem2/fruit_3.4.3/rake_base.rb"
   end
