@@ -163,6 +163,7 @@ clean:
 	rm -f $(MODELTESTSDIR)/*/*.out $(MODELTESTSDIR)/*/output/*.output $(MODELTESTSDIR)/*/output/reactionRates/*[0-9]
 	rm -f $(UNITTESTDIR)/fruit_basket_gen.f90 $(UNITTESTDIR)/fruit_driver_gen.f90 $(fruit_driver)
 	rm -f model/configuration/mechanism.{f90,o,prod,reac,ro2,so,species}
+	rm -f tests/unit_tests/fruit*
 
 # ================================================================== #
 # Dependencies

@@ -6,3 +6,5 @@ atchem2
 *.xml
 build/*
 tests/unit_tests/fruit*
+*~
+
