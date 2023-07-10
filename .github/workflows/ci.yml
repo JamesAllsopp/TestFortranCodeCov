@@ -122,4 +122,6 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./tests/unit_tests
+          directory: ./tests/unit_tests/
+	  gcov: true
+
