@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        fortran: [11]
+        fortran: [9]
       fail-fast: false
 
     # -------------------------------------------------------------
@@ -112,6 +112,7 @@ jobs:
           find /home/runner/work/TestFortranCodeCov -iname '*gcno'
           ls
           find /home/runner/work/TestFortranCodeCov -iname '*gcda'
+          cat result*
           # Upload `unittests` coverage to codecov
           #if [[ $RUNNER_OS == "Linux" ]]; then sudo ln -f -s /usr/bin/gcov-${{ matrix.fortran }} /usr/bin/gcov ; bash <(curl -s https://codecov.io/bash) -F unittests ; fi
           #make clean
