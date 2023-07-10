@@ -123,5 +123,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./tests/unit_tests/
-	  gcov: true
-
+          gcov: true
