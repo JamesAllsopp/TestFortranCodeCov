@@ -108,6 +108,8 @@ jobs:
           export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1:/home/runner/work/TestFortranCodeCov/TestFortranCodeCov/cvode/lib
           ls /home/runner/work/TestFortranCodeCov/TestFortranCodeCov/openlibm-0.8.1
           make unittests
+          echo "Contents of directory"
+          ls
           # Upload `unittests` coverage to codecov
           #if [[ $RUNNER_OS == "Linux" ]]; then sudo ln -f -s /usr/bin/gcov-${{ matrix.fortran }} /usr/bin/gcov ; bash <(curl -s https://codecov.io/bash) -F unittests ; fi
           #make clean
