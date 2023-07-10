@@ -110,9 +110,8 @@ jobs:
           make unittests
           echo "Contents of directory"
           find / -iname '*gcno'
-
           ls
-	  find / -iname '*gcda'
+          find / -iname '*gcda'
           # Upload `unittests` coverage to codecov
           #if [[ $RUNNER_OS == "Linux" ]]; then sudo ln -f -s /usr/bin/gcov-${{ matrix.fortran }} /usr/bin/gcov ; bash <(curl -s https://codecov.io/bash) -F unittests ; fi
           #make clean
