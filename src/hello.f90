@@ -7,7 +7,7 @@ PROGRAM hello
     real(kind=DP) :: theta, pi
 
     pi = 4.0_DP * atan( 1.0_DP )
-
+    test = 123.0_DP
     currentYear = 2000_DI
     currentDayOfYear = 0_DI
     theta = calcTheta()
