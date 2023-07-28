@@ -1,5 +1,13 @@
 ##JA - This is code I've hacked out of the main Makefile to try and build the tests
+#module purge
+#module load bear-apps/2020b/live
+#module load foss
+#which gfortran
+#module load CMake
+#module load Python
+#module load Ruby
 
+##gfortran 11
 module purge
 module load bear-apps/2021b
 module load foss/2021b
@@ -15,9 +23,9 @@ FRUITDIR="${HOME}/atchem-lib/fruit_3.4.3"
 
 RPATH_OPTION="-R" 
  
-FFLAGS="-O2 -fprofile-arcs -ftest-coverage -ffree-form -fimplicit-none -Wall -Wpedantic -fcheck=all -fPIC"
+FFLAGS="-O2 -fprofile-arcs -ftest-coverage  -ffree-form -fimplicit-none -Wall -Wpedantic -fcheck=all -fPIC"
  
- LDFLAGS="-L${CVODELIB} -L${OPENLIBMDIR} -Wl,${RPATH_OPTION},/usr/lib/:${CVODELIB}:${OPENLIBMDIR} -lopenlibm -lsundials_fcvode -lsundials_cvode -lsundials_fnvecserial -lsundials_nvecserial -ldl"
+LDFLAGS="-L${CVODELIB} -L${OPENLIBMDIR} -Wl,${RPATH_OPTION},/usr/lib/:${CVODELIB}:${OPENLIBMDIR} -lopenlibm -lsundials_fcvode -lsundials_cvode -lsundials_fnvecserial -lsundials_nvecserial -ldl"
  
 SRC="src"
 OBJ="obj"
@@ -49,3 +57,5 @@ cd ../..
 ${FORT_COMP} -o ${fruit_driver} -J${OBJ} -I${OBJ} ${all_unittest_code} ${FFLAGS} ${LDFLAGS}
 
 ${fruit_driver}
+pwd
+mv ${UNITTESTDIR}/*.gc* .

@@ -113,6 +113,7 @@ jobs:
           ls
           find /home/runner/work/TestFortranCodeCov -iname '*gcda'
           cat result*
+	  mv tests/unit_tests/*.gc* .   #Needed to deal with gcc11 changing the way it handles gcda and gcna files
           # Upload `unittests` coverage to codecov
           #if [[ $RUNNER_OS == "Linux" ]]; then sudo ln -f -s /usr/bin/gcov-${{ matrix.fortran }} /usr/bin/gcov ; bash <(curl -s https://codecov.io/bash) -F unittests ; fi
           #make clean
