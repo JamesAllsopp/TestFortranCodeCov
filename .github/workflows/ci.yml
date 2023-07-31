@@ -129,5 +129,5 @@ jobs:
       - name: Run model tests
         run: |
           export PATH=$PATH:$PWD/numdiff/bin
-	  export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
-	  make modeltests
+          export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+          make modeltests
