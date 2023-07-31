@@ -131,3 +131,6 @@ jobs:
           export PATH=$PATH:$PWD/numdiff/bin
           export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
           make modeltests
+      - name: Output model logs
+        run: |
+          cat tests/modeltests.log
