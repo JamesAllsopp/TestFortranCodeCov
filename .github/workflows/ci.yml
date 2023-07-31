@@ -126,3 +126,8 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           #directory: ./tests/unit_tests/
           gcov: true
+      - name: Run model tests
+        run: |
+          export PATH=$PATH:$PWD/numdiff/bin
+	  export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+	  make modeltests

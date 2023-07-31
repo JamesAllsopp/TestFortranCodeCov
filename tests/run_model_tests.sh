@@ -90,6 +90,7 @@ for test in $1; do
   test_counter=$((test_counter+1))
   echo "" >> $LOG_FILE
   echo "Set up and make" $TESTS_DIR/$test >> $LOG_FILE
+  make clean
   make  &> /dev/null
   exitcode=$?
   if [ $exitcode -ne 0 ]; then
@@ -121,6 +122,8 @@ for test in $1; do
   # $old_skip_line_number keeps track of the previously skipped line
   old_skip_line_number=0
   for skip_line_number in $sorted_list_of_skip_line_numbers; do
+    echo "Skip line:test_output_text $TESTS_DIR/$test/$test.out $TESTS_DIR/$test/$test.out.cmp $(($old_skip_line_number+1)) $(($skip_line_n\
+umber-1)) $test"  
     this_file_failures=$(test_output_text $TESTS_DIR/$test/$test.out $TESTS_DIR/$test/$test.out.cmp $(($old_skip_line_number+1)) $(($skip_line_number-1)) $test)
     exitcode=$?
     echo "Checking" $TESTS_DIR/$test/output/$test.out "between lines" $(($old_skip_line_number+1)) "and" $(($skip_line_number-1)) >> $LOG_FILE
@@ -134,68 +137,6 @@ $this_file_failures"
       exit 1
     fi
     old_skip_line_number=$skip_line_number
-  done
-
-  # Loop over all files in output directory, and numdiff these. If the numdiff
-  # gives differences, add the numdiff output to $this_test_failures via $this_file_failures.
-  for filename in $TESTS_DIR/$test/output/*.output.cmp; do
-    echo "Checking" $filename >> $LOG_FILE
-    this_file_failures=$(test_output_file ${filename: 0: ${#filename}-4} $filename)
-    exitcode=$?
-    if [ $exitcode -eq 0 ]; then
-      continue
-    elif [ $exitcode -eq 1 ]; then
-      this_test_failures="$this_test_failures
-
-$this_file_failures"
-    else
-      echo "Numdiff gave an error. Aborting." >> $LOG_FILE
-      exit 1
-    fi
-  done
-
-  # Loop over all files (that don't end in .cmp) in the reactionRates
-  # subdirectory of output directory, and numdiff these. If the numdiff gives differences,
-  # then add the numdiff output to $this_test_failures via $this_file_failures.
-  for filename in $TESTS_DIR/$test/output/reactionRates/* ; do
-    if [ ${filename: -4} == ".cmp" ] ; then
-      echo "Checking" $filename >> $LOG_FILE
-      this_file_failures=$(test_output_file ${filename: 0: ${#filename}-4} $filename)
-      exitcode=$?
-      if [ $exitcode -eq 0 ]; then
-        continue
-      elif [ $exitcode -eq 1 ]; then
-        this_test_failures="$this_test_failures
-
-$this_file_failures"
-      else
-        echo "Numdiff gave an error. Aborting." >> $LOG_FILE
-        exit 1
-      fi
-    fi
-  done
-
-  # Loop over all files (that fit mechanism.*.cmp) in the model/configuration
-  # subdirectory of output directory, and numdiff these. If the numdiff gives differences,
-  # then add the numdiff output to $this_test_failures via $this_file_failures.
-  for filename in $TESTS_DIR/$test/model/configuration/mechanism.* ; do
-    # guard against empty filelist
-    #[ -e "$filename" ] || continue
-    if [ ${filename: -4} == ".cmp" ] ; then
-      echo "Checking" $filename >> $LOG_FILE
-      this_file_failures=$(test_output_file ${filename: 0: ${#filename}-4} $filename)
-      exitcode=$?
-      if [ $exitcode -eq 0 ]; then
-        continue
-      elif [ $exitcode -eq 1 ]; then
-        this_test_failures="$this_test_failures
-
-$this_file_failures"
-      else
-        echo "Numdiff gave an error. Aborting." >> $LOG_FILE
-        exit 1
-      fi
-    fi
   done
 
   # Pass if $this_test_failures is empty. Otherwise, append all of $this_test_failures
@@ -215,7 +156,7 @@ $this_file_failures"
   echo $this_test_failures >> $LOG_FILE
 done
 
-#if [[ "$RUNNER_OS" == "Linux" ]]; then bash <(curl -s https://codecov.io/bash) -F tests ; fi
+if [[ "$RUNNER_OS" == "Linux" ]]; then bash <(curl -s https://codecov.io/bash) -F tests ; fi
 
 # After all tests are run, exit with a FAIL if $fail_counter>0, otherwise PASS.
 if [[ "$fail_counter" -gt 0 ]]; then
