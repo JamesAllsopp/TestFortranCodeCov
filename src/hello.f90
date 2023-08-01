@@ -21,5 +21,10 @@ PROGRAM hello
       INTEGER, INTENT(IN)::x,y,z
       SumCustom = x+y+z
     END FUNCTION SumCustom
+    INTEGER FUNCTION ProductCustom(x,y,z)
+      IMPLICIT NONE
+      INTEGER, INTENT(IN)::x,y,z
+      ProductCustom = x*y*z
+    END FUNCTION ProductCustom
 
 END PROGRAM hello
