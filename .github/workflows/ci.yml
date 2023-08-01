@@ -129,7 +129,9 @@ jobs:
       - name: Run model tests
         run: |
           export PATH=$PATH:$PWD/numdiff/bin
+	  export FORT_VERSION=${{ matrix.fortran }}
           export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+	  echo "The fortran version is ${FORT_VERSION}"
           make modeltests
       - name: Output model logs
         if: always()
