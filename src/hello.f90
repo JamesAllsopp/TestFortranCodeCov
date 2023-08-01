@@ -15,6 +15,9 @@ PROGRAM hello
     print *, 'Hello, World!'
     print *, theta   
     print *, SumCustom(2,5,9)
+    if (1 == 0) then
+       test = ProductCustom(2,5,9)
+    end if   
   CONTAINS
     INTEGER FUNCTION SumCustom(x,y,z)
       IMPLICIT NONE
