@@ -91,7 +91,8 @@ for test in $1; do
   echo "" >> $LOG_FILE
   echo "Set up and make" $TESTS_DIR/$test >> $LOG_FILE
   make clean
-  make  &> /dev/null
+  echo "make clean complete"
+  make  #&> /dev/null
   exitcode=$?
   if [ $exitcode -ne 0 ]; then
     echo "Building" $test "test failed with exit code" $exitcode >> $LOG_FILE
