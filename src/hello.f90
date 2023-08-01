@@ -14,9 +14,9 @@ PROGRAM hello
     ! This is a comment line; it is ignored by the compiler
     print *, 'Hello, World!'
     print *, theta   
-    print *, SumCustom(2,5,9)
+    print *, ProductCustom(2,5,9)
     if (1 < command_argument_count()) then
-       test = ProductCustom(2,5,9)
+       test = SumCustom(2,5,9) 
     end if   
   CONTAINS
     INTEGER FUNCTION SumCustom(x,y,z)
