@@ -132,5 +132,6 @@ jobs:
           export CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
           make modeltests
       - name: Output model logs
+        if: always()
         run: |
           cat tests/modeltests.log
