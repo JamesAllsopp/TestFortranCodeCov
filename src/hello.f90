@@ -9,14 +9,15 @@ PROGRAM hello
     test = 123.0_DP
     currentYear = 2000_DI
     currentDayOfYear = 0_DI
-    theta = calcTheta()
+    !theta = calcTheta()
 
     ! This is a comment line; it is ignored by the compiler
     print *, 'Hello, World!'
     print *, theta   
-    print *, ProductCustom(2,5,9)
+    print *, SumCustom(2,5,9)
+    print *, command_argument_count()
     if (1 < command_argument_count()) then
-       test = SumCustom(2,5,9)
+       test = ProductCustom(2,5,9) 
     end if   
   CONTAINS
     INTEGER FUNCTION SumCustom(x,y,z)
