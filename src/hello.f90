@@ -1,4 +1,5 @@
 
+
 PROGRAM hello
     use types_mod
     use date_mod, only : currentYear, currentDayOfYear
@@ -15,7 +16,7 @@ PROGRAM hello
     print *, 'Hello, World!'
     print *, theta   
     print *, SumCustom(2,5,9)
-    print *, command_argument_count()
+    !print *, command_argument_count()
     if (1 < command_argument_count()) then
        test = ProductCustom(2,5,9) 
     end if   
