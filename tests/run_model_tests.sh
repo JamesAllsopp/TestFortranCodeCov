@@ -90,9 +90,12 @@ for test in $1; do
   test_counter=$((test_counter+1))
   echo "" >> $LOG_FILE
   echo "Set up and make" $TESTS_DIR/$test >> $LOG_FILE
-  make clean
+  #make clean
+  #not sure the Makefile is working completely correctly
+  rm build/* obj/* hello
   echo "make clean complete"
-  make  #&> /dev/null
+  #make  #&> /dev/null
+  gfortran  -o hello -J obj src/dataStructures.f90 src/solarFunctions.f90 src/hello.f90 -fprofile-arcs -ftest-coverage -ffree-form -fimplicit-none -Wall -Wpedantic -fcheck=all -fPIC  
   exitcode=$?
   if [ $exitcode -ne 0 ]; then
     echo "Building" $test "test failed with exit code" $exitcode >> $LOG_FILE
