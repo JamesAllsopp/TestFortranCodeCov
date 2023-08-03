@@ -10,7 +10,7 @@ PROGRAM hello
     test = 123.0_DP
     currentYear = 2000_DI
     currentDayOfYear = 0_DI
-    !theta = calcTheta()
+    theta = calcTheta()
 
     ! This is a comment line; it is ignored by the compiler
     print *, 'Hello, World!'
